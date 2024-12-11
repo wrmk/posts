@@ -86,4 +86,16 @@ class API::V1::PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal "can't be created twice", response.parsed_body["errors"]["base"].first
   end
+
+  test "should retrieve top posts" do
+    get top_posts_api_v1_posts_path(limit: 5)
+
+    assert_response :ok
+
+    assert_predicate response.parsed_body["posts"], :present?
+
+    post = response.parsed_body["posts"].first
+
+    assert_equal %w[id title body], post.keys
+  end
 end

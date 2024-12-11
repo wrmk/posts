@@ -21,6 +21,12 @@ class API::V1::PostsController < ApplicationController
     end
   end
 
+  def top_posts
+    posts = Posts::Top.call(params[:limit].to_i)
+
+    render json: { posts: }, status: :ok
+  end
+
   private
 
   def post_params

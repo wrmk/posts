@@ -9,7 +9,10 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :ip, presence: true
 
+  # We can't use `average` method because it makes additional SQL query even it we preload ratings
   def average_rating
-    ratings.average(:value).to_f
+    return 0.0 if ratings.empty?
+
+    ratings.pluck(:value).sum / ratings.size.to_f
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :posts, only: [:create] do
         post :rate
+        get :top_posts
       end
     end
   end
