@@ -8,6 +8,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# rubocop:disable Style/ClassAndModuleChildren
 module Posts
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -32,3 +33,4 @@ module Posts
     config.api_only = true
   end
 end
+# rubocop:enable Style/ClassAndModuleChildren

@@ -6,11 +6,15 @@ require:
 Layout/LineLength:
   Max: 100
 
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
 AllCops:
   NewCops: enable
 
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Metrics/MethodLength:
   Enabled: false
