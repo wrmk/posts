@@ -1,0 +1,8 @@
+john_user:
+  login: john
+
+sam_user:
+  login: sam
+
+patrick_user:
+  login: patrick

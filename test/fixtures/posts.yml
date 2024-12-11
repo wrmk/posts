@@ -1,0 +1,17 @@
+ruby_post:
+  title: "Ruby is awesome"
+  body: "I love Ruby"
+  user: john_user
+  ip: "1.1.1.1"
+
+golang_post:
+  title: "Go is awesome"
+  body: "I love Go"
+  user: sam_user
+  ip: "2.2.2.2"
+
+scala_post:
+  title: "Scala is awesome"
+  body: "I love Scala"
+  user: patrick_user
+  ip: "3.3.3.3"

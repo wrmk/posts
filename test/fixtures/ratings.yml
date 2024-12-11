@@ -1,0 +1,9 @@
+ruby_post_rating_first:
+  user: john_user
+  post: ruby_post
+  value: 5
+
+ruby_post_rating_second:
+  user: sam_user
+  post: ruby_post
+  value: 1
