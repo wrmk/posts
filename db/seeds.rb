@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
-# This file should ensure the existence of records required to run the application in every
-# environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in
-# every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database
-# with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+ip_addresses = []
+logins = []
+50.times { ip_addresses << Faker::Internet.ip_v4_address }
+100.times { logins << Faker::Internet.username }
+
+200.times do # set 200_000
+  json = {
+    post: { title: Faker::Book.title,
+            body: Faker::Lorem.paragraph,
+            ip: ip_addresses.sample,
+            login: logins.sample }
+  }.to_json
+  escaped_json = json.tr('"', '"')
+
+  system "curl -X POST -H 'Content-Type: application/json' " \
+         "-d '#{escaped_json}' http://localhost:3000/api/v1/posts"
+end
