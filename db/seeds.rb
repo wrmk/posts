@@ -35,7 +35,7 @@ def generate_ratings
     escaped_json = json.tr('"', '"')
 
     system "curl -X POST -H 'Content-Type: application/json' " \
-           "-d '#{escaped_json}' http://localhost:3000/api/v1/posts/rate"
+           "-d '#{escaped_json}' http://localhost:3000/api/v1/ratings"
   end
 end
 

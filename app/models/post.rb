@@ -13,6 +13,6 @@ class Post < ApplicationRecord
   def average_rating
     return 0.0 if ratings.empty?
 
-    ratings.pluck(:value).sum / ratings.size.to_f
+    (ratings.pluck(:value).sum / ratings.size.to_f).round(2)
   end
 end
