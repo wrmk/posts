@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       end
 
       resource :ratings, only: [:create]
+
+      resource :users, only: [] do
+        get :top_authors
+      end
     end
   end
 end
