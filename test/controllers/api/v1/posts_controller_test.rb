@@ -65,4 +65,25 @@ class API::V1::PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal "must exist", response.parsed_body["errors"]["post"].first
   end
+
+  test "should rate only once" do
+    post_id = posts(:golang_post).id
+    user_id = users(:john_user).id
+
+    assert_difference "Rating.count" do
+      post rate_api_v1_posts_path,
+           params: { rating: { post_id:, user_id:, value: 2 } }
+    end
+
+    assert_response :created
+
+    assert_no_difference "Rating.count" do
+      post rate_api_v1_posts_path,
+           params: { rating: { post_id:, user_id:, value: 5 } }
+    end
+
+    assert_response :unprocessable_entity
+
+    assert_equal "can't be created twice", response.parsed_body["errors"]["base"].first
+  end
 end

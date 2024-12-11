@@ -12,9 +12,7 @@ class Ratings::AddTest < ActiveSupport::TestCase
     threads << Thread.new { Ratings::Add.call({ post_id:, user_id:, value: 5 }) }
 
     assert_difference "Rating.count" do
-      assert_raises ActiveRecord::RecordNotUnique do
-        threads.each(&:join)
-      end
+      threads.each(&:join)
     end
 
     assert_equal 2, Rating.last.value
