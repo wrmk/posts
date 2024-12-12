@@ -7,7 +7,7 @@ module Users::ListWithIP
     ips_with_array_of_logins = {}
     logins_with_ips(limit).each do |hash|
       ips_with_array_of_logins[hash[:ip]] ||= []
-      ips_with_array_of_logins[hash[:ip]] << hash[:login]
+      ips_with_array_of_logins[hash[:ip]] |= [hash[:login]]
     end
 
     ips_with_array_of_logins
