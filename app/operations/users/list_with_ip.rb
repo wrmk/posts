@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Users::FirstWithIP
+module Users::ListWithIP
   def self.call(limit)
     return [] if limit.zero?
 

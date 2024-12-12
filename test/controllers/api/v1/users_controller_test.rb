@@ -4,7 +4,7 @@ require "test_helper"
 
 class API::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   test "should return top authors" do
-    get top_authors_api_v1_users_path, params: { limit: 5 }
+    get list_with_ip_api_v1_users_path, params: { limit: 5 }
 
     assert_response :success
 

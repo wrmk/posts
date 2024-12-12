@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resource :ratings, only: [:create]
 
       resource :users, only: [] do
-        get :top_authors
+        get :list_with_ip
       end
     end
   end
