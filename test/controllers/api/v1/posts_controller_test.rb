@@ -39,6 +39,17 @@ class API::V1::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "can't be blank", response.parsed_body["errors"]["title"].first
   end
 
+  test "should return error if ip is invalid" do
+    assert_no_difference ["Post.count", "User.count"] do
+      post api_v1_posts_path,
+           params: { post: { title: "Title", body: "Body", ip: "invalid", login: "login" } }
+    end
+
+    assert_response :unprocessable_entity
+
+    assert_equal "invalid format", response.parsed_body["errors"]["ip"].first
+  end
+
   test "should return top posts" do
     get top_posts_api_v1_posts_path(limit: 5)
 
