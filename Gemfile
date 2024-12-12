@@ -12,4 +12,3 @@ gem "rubocop", require: false
 gem "rubocop-minitest", require: false
 gem "rubocop-performance", require: false
 gem "rubocop-rails", require: false
-gem "tzinfo-data", platforms: %i[windows jruby]

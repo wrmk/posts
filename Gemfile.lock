@@ -254,7 +254,6 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-performance
   rubocop-rails
-  tzinfo-data
 
 BUNDLED WITH
    2.5.22
