@@ -2,12 +2,12 @@
 
 class API::V1::RatingsController < ApplicationController
   def create
-    rate = Ratings::Add.call(rating_params)
+    rating = Ratings::Add.call(rating_params)
 
-    if rate.errors.present?
-      render json: { errors: rate.errors }, status: :unprocessable_entity
+    if rating.errors.present?
+      render json: { errors: rating.errors }, status: :unprocessable_entity
     else
-      render json: { average_rating: rate.post.average_rating }, status: :created
+      render json: { average_rating: rating.post.average_rating }, status: :created
     end
   end
 

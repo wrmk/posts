@@ -15,11 +15,13 @@ module Users::ListWithIP
 
   def self.logins_with_ips(limit)
     users = User.includes(:posts).select("users.id", "users.login").limit(limit)
+
     result = users.map do |user|
       user.posts.map do |post|
         { login: user.login, ip: post.ip.to_s }
       end
     end
+
     result.flatten
   end
 

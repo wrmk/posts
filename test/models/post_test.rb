@@ -12,6 +12,6 @@ class PostTest < ActiveSupport::TestCase
     assert_equal 5, rating1.value
     assert_equal 1, rating2.value
 
-    assert_equal 3, post.average_rating
+    assert_in_delta 3.0, post.average_rating
   end
 end

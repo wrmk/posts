@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Ratings::Add
-  def self.call(rate_params)
-    rate = Rating.new(rate_params)
-    rate.save
-    rate
+  def self.call(rating_params)
+    rating = Rating.new(rating_params)
+    rating.save
+    rating
   rescue ActiveRecord::RecordNotUnique
-    rate.errors.add(:base, "can't be created twice")
-    rate
+    rating.errors.add(:base, "can't be created twice")
+    rating
   end
 end

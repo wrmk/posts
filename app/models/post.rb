@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :ip, presence: true
 
-  # We can't use `average` method because it makes additional SQL query even it we preload ratings
+  # We can't use `average` method because it makes additional SQL query even if we preload ratings
   def average_rating
     return 0.0 if ratings.empty?
 
